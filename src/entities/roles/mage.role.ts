@@ -1,15 +1,11 @@
-import BaseRole from './base_role';
+import BaseRole from "./abstract_role";
 
 
-
-class Mage extends BaseRole {
-
+export default abstract class Mage extends BaseRole {
     constructor() {
         super();
-        this.setHealth(200);
+        this.setHealth(100)
     }
-
-    fireball(target: BaseRole): void {
-        this.attack(target, 30);
-    }
+    abstract fireballAttack(target: BaseRole): void; // 100 damage
+    abstract enchant(target: BaseRole): void;
 }
