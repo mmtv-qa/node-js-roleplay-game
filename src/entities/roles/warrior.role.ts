@@ -1,11 +1,12 @@
-import BaseRole from './base_role';
+import BaseRole from './abstract_role';
 
 
 
-class Warrior extends BaseRole {
-
+export default abstract class Warrior extends BaseRole {
     constructor() {
         super();
-        this.setHealth(200);
+        this.setHealth(200)
     }
+    abstract swordAttack(target: BaseRole): void; // 50 damage
+    abstract shieldDefend(target: BaseRole): void;
 }
