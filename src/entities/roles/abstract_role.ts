@@ -22,6 +22,7 @@ export default abstract class BaseRole {
 
     takeDamage(damage: number): void {
         this.health = this.health - damage >= 0 ? this.health - damage : 0;
+        this.isAlive = this.health > 0;
     }
 
     setEffect(effect: Effect): void {
