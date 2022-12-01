@@ -2,8 +2,8 @@ import Effect from "../effects/base_effect";
 
 
 export default abstract class BaseRole {
-   private health: number;
-   private isAlive: boolean = true;
+   protected _health: number;
+   private _isAlive: boolean = true;
    private effects: Effect[] = [];
 
     protected attack(target: BaseRole, damage: number): void {
@@ -16,13 +16,17 @@ export default abstract class BaseRole {
         target.takeDamage(damage);
     }
 
-    protected setHealth(health: number): void {
-        this.health = health;
+    get health(): number {
+        return this._health;
+    }
+
+    get isAlive(): boolean {
+        return this._isAlive;
     }
 
     takeDamage(damage: number): void {
-        this.health = this.health - damage >= 0 ? this.health - damage : 0;
-        this.isAlive = this.health > 0;
+        this._health = this.health - damage >= 0 ? this.health - damage : 0;
+        this._isAlive = this.health > 0;
     }
 
     setEffect(effect: Effect): void {
